@@ -8,12 +8,12 @@
  *
  * Also includes sprintf() functionality if more parameters are supplied.
  *
- * @param string original The original string to translate
+ * @param original    string original The original string to translate
  * @param additionals [n] if additional paramaters are supplied, the function behaves like sprintf.
  *
  * @returns string The translated string or the original if not found.
  */
-function jgettext(original) {
+function g11n3t(original) {
     var translation = g11n.translate(original);
 
     if (arguments.length > 1) {
@@ -28,11 +28,12 @@ function jgettext(original) {
 /**
  * Small multilanguaging pluralisation function =;).
  *
- * @param string $singular Singular form of text to translate.
- * @param string $plural Plural form of text to translate.
+ * @param singular  string   Singular form of text to translate.
+ * @param plural    string   Plural form of text to translate.
+ * @param count     integer  The number of items.
  *
  * @return string Translated text.
  */
-function jngettext(singular, plural, count) {
+function g11n4t(singular, plural, count) {
     return g11n.translatePlural(singular, plural, count);
 }

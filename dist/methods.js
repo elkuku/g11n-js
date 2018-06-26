@@ -1,0 +1,1 @@
+function g11n3t(a){let b=g11n.translate(a);return 1<arguments.length?(arguments[0]=b,phpjs.call_user_func_array(phpjs.sprintf,arguments)):b}function g11n4t(a,b,c){return g11n.translatePlural(a,b,c)}

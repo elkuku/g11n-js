@@ -1,6 +1,6 @@
 /**
- * @copyright  2010-2013 Nikolai Plath
- * @license    GNU/GPL http://www.gnu.org/licenses/gpl.html
+ * @copyright  2010-2018 Nikolai Plath
+ * @license    WTFPL
  */
 
 /**
@@ -14,7 +14,7 @@
  * @returns string The translated string or the original if not found.
  */
 function g11n3t(original) {
-    var translation = g11n.translate(original);
+    let translation = g11n.translate(original);
 
     if (arguments.length > 1) {
         arguments[0] = translation;

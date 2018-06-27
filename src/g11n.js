@@ -41,42 +41,49 @@
         /**
          *
          */
-        translate: function (string) {
+        translate: function (string, parameters) {
             if (this.debug) {
-                return this.debugTranslate(string);
+                return this.debugTranslate(string, parameters);
             }
 
             let test = phpjs.md5(string);
 
             if (typeof this.strings[test] !== 'undefined') {
-                return phpjs.base64_decode(this.strings[test]);
+                let translation = phpjs.base64_decode(this.strings[test]);
+                return parameters ? phpjs.strtr(translation, parameters): translation;
             }
 
-            return string;
+            return parameters ? phpjs.strtr(string, parameters): string;
         },
 
         /**
          *
          */
-        debugTranslate: function (string) {
+        debugTranslate: function (string, parameters) {
             let test = phpjs.md5(string);
             let msg, add;
 
             if (typeof this.strings[test] !== 'undefined') {
-                msg = phpjs.sprintf('Translated:\nO: %s\nT: %s', string,
-                    phpjs.base64_decode(this.strings[test]));
+                let translation = phpjs.base64_decode(this.strings[test]);
+                msg = phpjs.sprintf('Translated:\nO: %s\nT: %s', string, translation);
                 add = this.log(msg);
+                if (parameters) {
+                    console.log(parameters);
+                }
 
-                return phpjs.sprintf(add, phpjs
-                    .base64_decode(this.strings[test]));
+                return phpjs.sprintf(add, parameters ? phpjs.strtr(translation, parameters): translation);
             }
 
             add = this.log(phpjs.sprintf('Untranslated:\nO: %s', string),
                 'warn');
 
+            if (parameters) {
+                console.warn(parameters);
+            }
+
             this.log('', 'trace');
 
-            return phpjs.sprintf(add, string);
+            return phpjs.sprintf(add, parameters ? phpjs.strtr(string, parameters): string);
         },
 
         /**

@@ -1,6 +1,6 @@
 {
   "name": "g11n-js",
-  "version": "1.0.0",
+  "version": "1.2",
   "description": "g11n is a custom language handler",
   "main": "js/g11n.js",
   "scripts": {

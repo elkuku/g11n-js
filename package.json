@@ -2,28 +2,29 @@
   "name": "g11n-js",
   "version": "1.3.1",
   "description": "g11n is a custom language handler",
-  "main": "js/g11n.js",
+  "homepage": "https://github.com/elkuku/g11n-js#readme",
+  "main": "dist/g11n-pack.js",
+  "author": "Nikolai Plath",
+  "license": "WTFPL",
+  "keywords": [
+    "g11n",
+    "language"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elkuku/g11n-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/elkuku/g11n-js/issues"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf dist/*",
     "minify": "./node_modules/.bin/babel-minify src -d dist",
     "concat": "./node_modules/.bin/concat -o dist/g11n-pack.js dist/g11n.js dist/methods.js dist/phpjs.js",
-    "build": "npm run clean && npm run minify && npm run concat"
+    "concat-mloader": "./node_modules/.bin/concat -o dist/mloader-g11n-pack.js dist/g11n.js dist/phpjs.js",
+    "build": "npm run clean && npm run minify && npm run concat && npm run concat-mloader"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/elkuku/g11n-js.git"
-  },
-  "keywords": [
-    "g11n",
-    "language"
-  ],
-  "author": "Nikolai Plath",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/elkuku/g11n-js/issues"
-  },
-  "homepage": "https://github.com/elkuku/g11n-js#readme",
   "devDependencies": {
     "babel-minify": "^0.4.3",
     "concat": "^1.0.3"

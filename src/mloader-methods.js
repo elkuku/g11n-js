@@ -1,3 +1,9 @@
+/**
+ * @copyright  2010-2018 Nikolai Plath
+ * @license    WTFPL
+ */
+const g11n = require('./mloader-g11n')
+
 module.exports = {
     /**
      * Small multilanguaging function =;).

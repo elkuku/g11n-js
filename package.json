@@ -22,11 +22,13 @@
     "clean": "rm -rf dist/*",
     "minify": "./node_modules/.bin/babel-minify src -d dist",
     "concat": "./node_modules/.bin/concat -o dist/g11n-pack.js dist/g11n.js dist/methods.js dist/phpjs.js",
-    "concat-mloader": "./node_modules/.bin/concat -o dist/mloader-g11n-pack.js dist/g11n.js dist/phpjs.js",
-    "build": "npm run clean && npm run minify && npm run concat && npm run concat-mloader"
+    "build": "npm run clean && npm run minify && npm run concat"
   },
   "devDependencies": {
     "babel-minify": "^0.4.3",
     "concat": "^1.0.3"
+  },
+  "dependencies": {
+    "locutus": "^2.0.9"
   }
 }

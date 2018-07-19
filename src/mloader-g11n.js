@@ -2,11 +2,12 @@
  * @copyright  2010-2018 Nikolai Plath
  * @license    WTFPL
  */
-const md5 = require('locutus/php/strings/md5')
 const strtr = require('locutus/php/strings/strtr')
+const sprintf = require('locutus/php/strings/sprintf')
+const md5 = require('locutus/php/strings/md5')
 const base64_decode = require('locutus/php/url/base64_decode')
 const call_user_func = require('locutus/php/funchand/call_user_func')
-const sprintf = require('locutus/php/strings/sprintf')
+const create_function = require('locutus/php/funchand/create_function')
 
 class G11n {
     constructor() {
@@ -30,6 +31,15 @@ class G11n {
 
     setPluralFunction(object) {
         this.pluralFunction = object
+    }
+
+    loadJsonData(string) {
+        let data = JSON.parse(string)
+
+        this.loadLanguageStrings(data.strings)
+        this.loadPluralStrings(data.stringsPlural)
+        this.setPluralFunction(create_function('n', data.pluralFunction))
+        this.debug = data.debug
     }
 
     translate(string, parameters) {
@@ -153,6 +163,3 @@ class G11n {
 g11n = new G11n()
 
 module.exports = g11n
-
-// We do this to provision the translations in the window object (coming from PHP...)
-window.g11n = g11n

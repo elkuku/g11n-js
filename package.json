@@ -1,6 +1,6 @@
 {
   "name": "g11n-js",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "g11n is a custom language handler",
   "homepage": "https://github.com/elkuku/g11n-js#readme",
   "main": "dist/mloader-methods.js",
